@@ -23,12 +23,12 @@ export default function useClientes() {
 
 
     function obterTodos() {
+        //obterTodos/setar os clientes  então mostrar todos na tabela
         repo.obterTodos().then(clientes => {
             setClientes(clientes)
             exibirTabela()
         })
     }
-
 
     function clienteSelecionado(cliente: Cliente) {
         setCliente(cliente)
@@ -50,6 +50,11 @@ export default function useClientes() {
         await repo.salvar(cliente)
         obterTodos()
     }
+
+    function exibirTexto() {
+        return "Clique em Novo Cliente Para Cadastrar"
+    }
+
     return {
         cliente,
         clientes,
@@ -60,5 +65,6 @@ export default function useClientes() {
         obterTodos,
         tabelaVisivel,
         exibirTabela,
+        exibirTexto,
     }
 }

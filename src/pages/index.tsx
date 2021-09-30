@@ -6,19 +6,23 @@ import Formulario from "../components/Formulario"
 import useClientes from '../hooks/useClientes'
 
 
+
+
 export default function Home() {
 
-const {
-  cliente,
-        clientes,
-        novoCliente,
-        salvarCliente,
-        clienteExcluido,
-        clienteSelecionado,
-        tabelaVisivel,
-        exibirTabela,
 
- } = useClientes()
+
+  const {
+    cliente,
+    clientes,
+    novoCliente,
+    salvarCliente,
+    clienteExcluido,
+    clienteSelecionado,
+    tabelaVisivel,
+    exibirTabela,
+
+  } = useClientes()
 
   return (
     <div className={`
@@ -27,8 +31,6 @@ const {
       text-width
     `}>
       <Layout titulo="Cadastro Simples" >
-
-
         {tabelaVisivel ? (
           <>
             <div className="flex justify-end">
@@ -37,22 +39,26 @@ const {
                 onClick={novoCliente}>
                 Novo Cliente
               </Botao>
-
             </div>
 
-            <Tabela clientes={clientes}
-              clienteSelecionado={clienteSelecionado}
-              clienteExcluido={clienteExcluido}
-            />
+            {clientes.length ? ( 
+              <Tabela clientes={clientes}
+                clienteSelecionado={clienteSelecionado}
+                clienteExcluido={clienteExcluido}
+              />
+            ) : (
+              <div>Nenhum registro encontrado</div>
+            )}
           </>
         ) : (
           <Formulario
             cliente={cliente}
             clienteMudou={salvarCliente}
-            cancelado={() =>  exibirTabela}
+            cancelado={() => exibirTabela}
           />
         )}
       </Layout>
     </div>
   )
 }
+//cliente.length > 0

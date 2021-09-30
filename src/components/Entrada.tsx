@@ -21,7 +21,7 @@ export default function Entrada(props: EntradaProps) {
 
                 readOnly={props.somenteLeitura}
 
-                //se o valor mudou, vai ingormar o novo valor
+                //se o valor mudou, vai igormar o novo valor
                 onChange={e => props.valorMudou?.(e.target.value)}
 
                 className={`
